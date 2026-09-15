@@ -1,0 +1,31 @@
+[project]
+name = "cpy"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+authors = [{ name = "me", email = "me@example.com" }]
+dependencies = [
+  "conan>=2.32.0",
+  "pybind11>=3.1.0",
+  "pytest>=9.1.1",
+  "scikit-build>=0.19.1",
+]
+
+[build-system]
+requires = ["pybind11", "scikit-build-core"]
+build-backend = "scikit_build_core.build"
+
+[tool.pyright]
+venv = ".venv"
+venvPath = "."
+
+[tool.scikit-build]
+build-dir = "build"
+build.verbose = true
+logging.level = "INFO"
+
+[tool.scikit-build.cmake.define]
+CMAKE_EXPORT_COMPILE_COMMANDS = "ON"
+CMAKE_GENERATOR = "Ninja"
+CMAKE_TOOLCHAIN_FILE = "./build/Release/generators/conan_toolchain.cmake"
